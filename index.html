@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa de Investigación UCT (p5)</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #0a0f15; color: #e8eef5; font: 13.5px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    canvas { display: block; }
+    #ui { position: fixed; left: 12px; top: 12px; display: flex; flex-direction: column; gap: 8px; width: 290px; }
+    .fila { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+    #ui button { background: #101720; color: #e8eef5; border: 1px solid #243142; border-radius: 6px; padding: 6px 10px; font: inherit; cursor: pointer; }
+    #ui button.activo { background: #8ab4ff; color: #09121f; border-color: #8ab4ff; }
+    #ui input[type=search] { background: #172230; color: #e8eef5; border: 1px solid #243142; border-radius: 6px; padding: 8px 10px; font: inherit; width: 100%; box-sizing: border-box; }
+    #ui input[type=range] { flex: 1; accent-color: #8ab4ff; }
+    #ui span { color: #92a3b8; font-size: 12.5px; }
+    #panel { display: none; position: fixed; right: 0; top: 0; bottom: 0; width: 330px; max-width: 100vw; box-sizing: border-box; overflow-y: auto; padding: 18px 20px 30px; background: #101720; border-left: 1px solid #243142; transform: translateX(100%); transition: transform 0.2s ease; }
+    #panel.abierto { transform: translateX(0); }
+    @media (max-width: 600px) { #ui { width: calc(100vw - 24px); left: 12px; } #panel { width: 100vw; border-left: none; } }
+    #panel h2 { margin: 0 0 6px; font-size: 19px; line-height: 1.25; }
+    #panel h3 { margin: 18px 0 8px; font: 500 10.5px/1 ui-monospace, Menlo, Consolas, monospace; letter-spacing: .09em; text-transform: uppercase; color: #92a3b8; }
+    #panel a { color: #8ab4ff; text-decoration: none; }
+    #panel a:hover { text-decoration: underline; }
+    #panel p { margin: 0 0 8px; }
+    #panel .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    #panel .chip { border: 1px solid #243142; border-radius: 5px; padding: 2px 8px; font: 12px ui-monospace, Menlo, Consolas, monospace; }
+    #panel .fila-btn { display: flex; justify-content: space-between; gap: 10px; width: 100%; background: none; border: 0; border-bottom: 1px solid #243142; padding: 7px 0; color: #e8eef5; font: inherit; text-align: left; cursor: pointer; }
+    #panel .fila-btn:hover { background: #172230; }
+    #panel .num { color: #92a3b8; font: 12px ui-monospace, Menlo, Consolas, monospace; }
+    #panel .trabajo { padding: 8px 0; border-bottom: 1px solid #243142; }
+    #panel .meta { color: #92a3b8; font: 11px ui-monospace, Menlo, Consolas, monospace; margin-top: 3px; }
+    #pie { position: fixed; left: 12px; bottom: 10px; color: #92a3b8; font: 11px ui-monospace, Menlo, Consolas, monospace; pointer-events: none; }
+  </style>
+  <!-- Las librerías van antes que sketch.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.0/p5.min.js" integrity="sha384-iXQS4ZPjzHnfp/+rk9exUYeALf4d/ROG1vEY8k8heiEmanxZvLLunj/apIGhP1Ys" crossorigin="anonymous"></script>
+  <script>window.p5 || document.write('<script src="lib/p5.min.js"><\/script>')</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js" integrity="sha384-su5kReKyYlIFrI62mbQRKXHzFobMa7BHp1cK6julLPbnYcCW9NIZKJiTODjLPeDh" crossorigin="anonymous"></script>
+  <script>window.d3 || document.write('<script src="lib/d3.min.js"><\/script>')</script>
+  <script src="sketch.js"></script>
+</head>
+<body>
+  <div id="ui"></div>
+  <div id="panel"></div>
+  <div id="pie"></div>
+</body>
+</html>
