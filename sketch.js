@@ -78,7 +78,7 @@ function crearUI() {
 
   buscador = createInput('', 'search');
   buscador.parent(ui);
-  buscador.attribute('placeholder', 'Buscar nombre o término, p. ej. mapuche');
+  buscador.attribute('placeholder', 'Buscar nombre o término, p. ej. temuco');
   buscador.input(buscar);
   buscador.elt.addEventListener('keydown', ev => {
     if (ev.key === 'Enter') {
@@ -100,7 +100,7 @@ function crearUI() {
 }
 
 function actualizarEtiquetaMin() {
-  etiquetaMin.html('Mínimo de trabajos: ' + minW);
+  etiquetaMin.html('Mínimo de publicaciones: ' + minW);
 }
 
 function pintarBotones() {
